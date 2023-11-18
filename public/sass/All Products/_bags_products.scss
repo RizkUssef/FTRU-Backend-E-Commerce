@@ -1,0 +1,20 @@
+.BAGS{
+        height: 100vh;
+        width: 100%;
+        // margin-top:-96PX;
+        background-image: url('../img/Background/all/bags.jpg');
+        background-size: cover;
+        background-size: cover;
+        background-position: center;
+        &::before {
+            content: "";
+            position: absolute;
+            // top: 0;
+            // left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba($color: #3F4045, $alpha: 0.3);
+            filter: blur(5px);
+        }
+    
+}

@@ -1,0 +1,234 @@
+.reg_form{
+    .containt{
+        .all_product{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            width: 80%;
+            margin-bottom: 30px;
+            .total{
+                align-self: flex-end;
+                h1{
+                    color: #3f4045;
+                    font-size: 30px;
+                    margin-bottom: 0px;
+                    display: inline-block;
+                    margin-right: 30px;
+                }
+                .total_price{
+                    font-size: 30px;
+                    color: #3f4045;
+                    display: inline-block;
+                    // ! add this
+                    width: fit-content;
+                }
+            }
+            .total_line{
+                width: 30%;
+                height: 0.5px;
+                background-color:rgba(#3f4045,0.5);
+                margin-bottom: 20px;
+                margin-top: 10px;
+                align-self: flex-end;
+
+            }
+            a{
+                text-decoration: none;
+                color: #3f4045;
+                display: inline-block;
+                width: 100%;
+            }
+            h1{
+                color: #3f4045;
+                font-size: 30px;
+                align-self: flex-start;
+                margin-bottom: 20px;
+            }
+            .one_product{
+                width: 100%;
+                display: grid;
+                justify-content: space-between;
+                align-items: baseline;
+                grid-template-columns: 2fr 1fr;
+                margin-bottom: 10px;
+                .pro_name{
+                    color: #3f4045;
+                    font-size: 20px;
+                    // margin-bottom: 10px;
+                    width: fit-content;
+                }
+                .delete_price{
+                    display: grid;
+                    grid-template-columns: 2fr 1fr;
+                    align-items: baseline;
+                    justify-self: right;
+                    gap: 10px;
+                    .pro_price{
+                        color: #3f4045;
+                        font-size: 20px;
+                        // margin-bottom: 10px;
+                        width: fit-content;
+                        display: inline-block;
+                        
+                    }
+                    .delete{
+                        width: fit-content;
+                        // !add this
+                        margin-top: 30px;
+                        align-self: baseline;
+                        display: inline-block;
+                        button{
+                            border: none;
+                            background-color: transparent;
+                            // !add this
+                            cursor: pointer;
+                        }
+                        img{
+                            width: 20px;
+                            height: 20px;
+                        }
+                    }
+                }
+            }
+            .line{
+                width: 100%;
+                height: 0.5px;
+                background-color:rgba(#3f4045,0.5);
+                margin-bottom: 20px;
+            }
+        }
+    }
+        .gif_video_pay{
+            display: none;
+        }
+    
+}
+
+@media screen and (min-width: 600px) and (max-width: 800px) {
+    .reg_form{
+        .containt{
+            .all_product{
+                width: 354px;
+                .one_product{
+                    width: 354px;
+                }
+                .line{
+                    width: 354px;
+                }
+            form{
+                width: 354px;
+                .submit{
+                    margin-left: 37%;
+                }
+            }
+        }
+    }
+}
+}
+
+@media screen and (min-width: 801px) and (max-width: 1024px) {
+    .reg_form{
+        .containt{
+            .all_product{
+                width: 500px;
+                .one_product{
+                    width: 500px;
+                }
+                .line{
+                    width: 500px;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1025px) and (max-width: 1250px) {
+    .reg_form{
+        padding-top: 50px;
+        flex-direction: row;
+        .containt{
+            .all_product{
+                width: 500px;
+                .one_product{
+                    width: 500px;
+                }
+                .line{
+                    width: 500px;
+                }
+            }
+        }
+        .gif_video_pay{
+            margin-top: 50px;
+            display: inline-block;
+            width: 60%;
+            height: 55vh;
+            align-self: center;
+            position: relative;
+            background-image: url("../../img/illast/Payment Information.gif");
+            background-size: contain;
+            background-repeat: no-repeat;
+            margin-right: 50px;
+        }
+    }
+}
+
+@media screen and (min-width: 1251px) and (max-width: 1500px) {
+    .reg_form{
+        padding-top: 50px;
+        flex-direction: row;
+        .containt{
+            .all_product{
+                width: 500px;
+                .one_product{
+                    width: 500px;
+                }
+                .line{
+                    width: 500px;
+                }
+
+            }
+        }
+        .gif_video_pay{
+            display: inline-block;
+            width: 76%;
+            height: 68vh;
+            align-self: center;
+            position: relative;
+            background-image: url("../../img/illast/Payment Information.gif");
+            background-size: cover  ;
+            background-repeat: no-repeat;
+            margin-right: 50px;
+        }
+    }
+}
+
+@media screen and (min-width: 1501px) and (max-width: 2000px) {
+    .reg_form{
+        padding-top: 50px;
+        flex-direction: row;
+        .containt{
+            .all_product{
+                width: 500px;
+                .one_product{
+                    width: 500px;
+                }
+                .line{
+                    width: 500px;
+                }
+            }
+        }
+            .gif_video_pay{
+                display: inline-block;
+                width: 76%;
+                height: 75vh;
+                align-self: center;
+                position: relative;
+                background-image: url("../../img/illast/Payment Information.gif");
+                background-size: cover  ;
+                background-repeat: no-repeat;
+                margin-right: 50px;
+            }
+        }
+}
+

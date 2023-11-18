@@ -1,0 +1,31 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    font-family: 'Karantina', cursive;
+    letter-spacing: 1px;
+    font-weight: 300;
+}
+::-webkit-scrollbar {
+    width: 5px;
+    border-radius: 25px;
+    background-color: #ccc;
+    display: none;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: #3F4045;
+    border-radius: 5px;
+  }
+.mg_top_zero{
+  margin-top: 0px;
+}
+.padd_top_zero{
+  padding-top: 0px;
+}
+.padd_top_50{
+  padding-top: 50px;
+}
+
+.mg_top_50{
+  margin-top: 50px;
+}

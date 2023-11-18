@@ -1,0 +1,329 @@
+body{
+    overflow-x: hidden;
+}
+nav{
+    height: 6rem;
+    width: 100vw;
+    // background-color: rgba($color: #e9e8de, $alpha: 0.4);
+    background-color: transparent;
+    display: flex;
+    // position: fixed;
+    z-index: 10;
+}
+
+/*Styling nav_nav_logo*/
+.nav_logo{
+    padding:1vh 1vw;
+    text-align: center;
+    width: 114px;
+    height: 86px;
+    background-image: url('../img/Blob/logggggo.svg');
+}
+.nav_logo img {
+    height: 5rem;
+    width: 5rem;
+}
+
+/*Styling Links*/
+.nav-links{
+    display: flex;
+    list-style: none; 
+    width: 88vw;
+    padding: 0 0.7vw;
+    // justify-content: space-evenly;
+    align-items: center;
+    text-transform: uppercase;
+    margin-left: 120px;
+    .fade{
+        height: 82px;
+    }
+}
+.nav-links li a{
+    text-decoration: none;
+    position: absolute;
+    top: 23px;
+    left: 10px;
+    font-size: 25px;
+    width: 100%;
+    height: 100%;
+}
+
+.nav-links li {
+    position: relative;
+    width: 85px;
+    height: 85px;
+    // background-image: url('../img/Blob/register_1.svg');
+    transition-duration: 0.3s;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    margin-right: 100px;
+    a{
+        color: #3F4045;
+        img{
+            width: 20px;
+            height: 20px;
+            margin-left: 7px;
+        }
+    }
+    &:hover{
+        background-image: url('../img/Blob/register_2.svg');
+        a{
+            color: #e9e8de;
+        }
+        text-shadow: 2px 2px 4px #e9e8de;
+    }
+    &:nth-child(1){
+        // background-image: url('../img/Blob/man_nav_1.svg');
+        // width: 85px;
+        // height: 85px;
+        a{
+            margin-left: 8px;
+        }
+        &:hover{
+            background-image: url('../img/Blob/man_nav_2.svg');
+        }
+    }
+    &:nth-child(3){
+        // background-image: url('../img/Blob/kids_nav_1.svg');
+        a{
+            margin-left: 16px;
+        }
+        &:hover{
+            background-image: url('../img/Blob/kids_nav_2.svg');
+        }
+    }
+    &:nth-child(4){
+        // background-image: url('../img/Blob/access_nav_1.svg');
+        width: 102px;
+        // height: 68px;
+        &:hover{
+            background-image: url('../img/Blob/access_nav_2.svg');
+        }
+    }
+    &:nth-child(5){
+        // background-image: url('../img/Blob/bags_nav_1.svg');
+        a{
+            margin-left: 13px;
+        }
+        &:hover{
+            background-image: url('../img/Blob/bags_nav_2.svg');
+        }
+    }
+    // !added
+    &:nth-child(6){
+        margin-right: 8px;
+        // width: 102px;
+        // height: 50px;
+        // background-image: url('../img/Blob/register_1 copy.svg');
+        a{
+            img{
+                width: 20px;
+                height: 20px;
+                margin-left: 7px;
+            }
+        }
+        &:hover{
+            background-image: url('../../img/Blob/woman_nav_2.svg');
+        }
+    }
+    //! added
+    &:nth-child(7){
+        width: 50px;
+        height: 50px;
+        // margin-right: 20px;
+        margin-left: 200px;
+        background-image: url('../img/Blob/register_1 copy.svg');
+        a{
+            top:10px;
+            left: 5px;
+            img{
+                width: 20px;
+                height: 20px;
+                margin-left: 7px;
+            }
+        }
+        a{
+            img{
+                width: 20px;
+                height: 20px;
+                margin-left: 7px;
+            }
+        }
+        &:hover{
+            background-image: url('../img/Blob/register_1 copy.svg');
+
+        }
+    }
+    &:nth-child(8){
+        width: 50px;
+        height: 50px;
+        margin-right: 20px;
+        background-image: url('../img/Blob/register_1 copy.svg');
+        a{
+            top:10px;
+            left: 5px;
+            img{
+                width: 20px;
+                height: 20px;
+                margin-left: 7px;
+            }
+        }
+        a{
+            img{
+                width: 20px;
+                height: 20px;
+                margin-left: 7px;
+            }
+        }
+        &:hover{
+            background-image: url('../img/Blob/register_1 copy.svg');
+
+        }
+    }
+}
+
+/*Styling Hamburger Icon*/
+.hamburger div{
+    width: 30px;
+    height:3px;
+    background: #3F4045;
+    margin: 5px;
+    transition: all 0.3s ease;
+}
+.hamburger{
+    display: none;
+    // background-image: url('../img/Blob/login_1.svg');
+}
+
+
+
+
+
+// media
+@media screen and (min-width: 480px) {
+    .nav_logo{
+        width: 111px;
+        height: 89px;
+    }
+}
+
+@media screen and (min-width: 600px) {
+    .nav_logo{
+        width: 108px;
+        height: 80px;
+    }
+}
+@media screen and (min-width: 768px) {
+    .nav_logo{
+        width: 105px;
+        height: 75px;
+    }
+}
+@media screen and (min-width: 800px) {
+    .nav_logo{
+        width: 118px;
+        height: 84px;
+    }
+}
+@media screen and (min-width: 1024px) {
+    .nav_logo{
+        width: 107px;
+        height: 80px;
+    }
+    .nav-links li:nth-child(6){
+        // margin-right: -29px;
+
+    }
+    .nav-links li:nth-child(7){
+        margin-right: 8px;
+    }
+}
+@media screen and (min-width: 1500px) {
+    .nav_logo{
+        width: 91px;
+        height: 81px;
+    }
+    .nav-links li:nth-child(6){
+        margin-right: -95px;
+
+    }
+    .nav-links li:nth-child(7){
+        margin-right: 8px;
+
+    }
+}
+
+/*Stying for small screens*/
+@media screen and (max-width: 800px){
+    nav{
+        position: fixed;
+        z-index: 3;
+    }
+    .hamburger{
+        display:block;
+        position: absolute;
+        cursor: pointer;
+        right: 5%;
+        top: 50%;
+        transform: translate(-5%, -50%);
+        z-index: 2;
+        transition: all 0.7s ease;
+    }
+    .nav-links{
+        position: fixed;
+        background: #131418;
+        height: 100vh;
+        width: 100%;
+        flex-direction: column;
+        clip-path: circle(50px at 90% -20%);
+        -webkit-clip-path: circle(50px at 90% -10%);
+        transition: all 1s ease-out;
+        pointer-events: none;
+    }
+    .nav-links.open{
+        clip-path: circle(1000px at 90% -10%);
+        -webkit-clip-path: circle(1000px at 90% -10%);
+        pointer-events: all;
+    }
+    .nav-links li{
+        opacity: 0;
+    }
+    .nav-links li:nth-child(1){
+        transition: all 0.5s ease 0.2s;
+    }
+    .nav-links li:nth-child(2){
+        transition: all 0.5s ease 0.4s;
+    }
+    .nav-links li:nth-child(3){
+        transition: all 0.5s ease 0.6s;
+    }
+    .nav-links li:nth-child(4){
+        transition: all 0.5s ease 0.7s;
+    }
+    .nav-links li:nth-child(5){
+        transition: all 0.5s ease 0.8s;
+    }
+    .nav-links li:nth-child(6){
+        transition: all 0.5s ease 0.9s;
+        margin: 0;
+    }
+    .nav-links li:nth-child(7){
+        transition: all 0.5s ease 1s;
+        margin: 0;
+    }
+    li.fade{
+        opacity: 1;
+    }
+}
+
+/*Animating Hamburger Icon on Click*/
+.toggle .line1{
+    transform: rotate(-45deg) translate(-5px,6px);
+}
+.toggle .line2{
+    transition: all 0.7s ease;
+    width:0;
+}
+.toggle .line3{
+    transform: rotate(45deg) translate(-5px,-6px);
+}
