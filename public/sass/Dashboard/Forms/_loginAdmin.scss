@@ -1,0 +1,69 @@
+.login_header{
+    position: fixed;
+    // background-color: #3F4045;
+    .logo{
+        height: 60px;
+        width: 100px;
+        background-image: url('../../img/dashboard/blobs/logo_bg.svg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        padding: 10px;
+    }
+}
+.all_page{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: black;
+    color: #3F4045;
+    flex-direction: column;
+    gap: 30px;
+    h1{
+        font-size: 50px;
+        color: #548686;
+    }
+    .form_container{
+        form{
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            flex-direction: column;
+            gap: 10px;
+            label{
+                font-size: 20px;
+                color: #548686;
+            }
+            input{
+                width: 350px;
+                height: 30px;
+                padding: 5px 10px;
+                font-size: 18px;
+                color: #3F4045;
+                background-color: transparent;
+                border: 1.5px solid #3F4045;
+                border-radius: 10px;
+                margin-bottom: 20px;
+                text-shadow: 0px 0px 30px #548686;
+                &:focus{
+                    outline: none;
+                    box-shadow: 0px 0px 30px #548686;
+                }
+            }
+            button{
+                padding: 8px 25px;
+                font-size: 20px;
+                cursor: pointer;
+                background-color: transparent;
+                color: #548686;
+                border: 1.5px solid #3F4045;
+                border-radius: 10px;
+                margin-top: 20px;
+                align-self: center;
+                &:hover{
+                    box-shadow: 0px 0px 30px #548686;
+                }
+            }
+        }
+    }
+}

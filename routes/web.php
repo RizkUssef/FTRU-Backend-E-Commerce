@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RedirectController;
@@ -71,3 +72,33 @@ Route::post('FTRU/Home/rate',[ProductController::class,'rateProduct'])->name('ra
 Route::fallback(function(){
     return redirect()->route('error')->with("error","Oops! It seems like you've reached an incorrect destination");
 });
+
+Route::get("dashboard",[AdminController::class,"dashboard"])->name('dash');
+
+Route::get("login to dashboard",[AdminController::class,"loginForm"])->name('admin login');
+Route::post("adminLogin",[AdminController::class,"handleAdminLogin"])->name('handle admin login');
+
+Route::get("Dashboard/add category",[AdminController::class,"categoryForm"])->name('add category');
+Route::post("add category handle",[AdminController::class,"addCategoryHandle"])->name('handle add category');
+
+Route::get("Dashboard/add subcategory",[AdminController::class,"subCategoryForm"])->name('add subcategory');
+Route::post("add subcategory handle",[AdminController::class,"addSubCategoryHandle"])->name('handle add subcategory');
+
+Route::get("all categories",[AdminController::class,"allCategories"])->name("allcate");
+//show one categorty
+Route::get("Dashboard/Show all Category/One Category/{category_id}", [AdminController::class, "oneCategory"])->name("Show_one category");
+//show one subcategory
+Route::get("Dashboard/Show all Category/One subCategory/{category_id}/{subcategory_id}", [AdminController::class, "oneSubCategory"])->name("Show_one subcategory");
+// Route::get("all customer",[AdminController::class,"allCustomer"])->name("all customer");
+
+// add product
+Route::get('Dashboard/add a new product/{category_id}/{subcategory_id}',[AdminController::class, 'productForm'])->name('Add new product');
+Route::post("Dashboard/add a new product/{category_id}/{subcategory_id}",[AdminController::class,"productFormHandle"])->name("handle add product");
+
+// show one product 
+Route::get('Dashboard/One Product/{category_id}/{subcategory_id}/{product_id}',[AdminController::class, 'oneProduct'])->name('Show_one product');
+
+Route::get("Dashboard/add a new color & size product/{category_id}/{subcategory_id}/{product_id}",[AdminController::class,"productColorSizeForm"])->name("Add new CS to product");
+Route::post('add a new color & size product handle/{category_id}/{subcategory_id}/{product_id}',[AdminController::class, 'productSizeColorFormHandle'])->name('handel add new CS to product');
+
+Route::get('Dashboard/all Custmers',[AdminController::class, 'allCustomer'])->name('all customers');

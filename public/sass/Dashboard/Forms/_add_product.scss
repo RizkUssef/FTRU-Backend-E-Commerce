@@ -1,0 +1,138 @@
+.form{
+    grid-column: 1/7;
+    width: 70%;
+    margin: auto;
+    margin-bottom: 50px;
+    h1{
+        font-size: 40px;
+        margin-bottom: 40px;
+        margin-left: -50px;
+    }
+    .label_inputs{
+        display: flex;
+        gap: 90px;
+        label{
+            font-size: 20px;
+            display: block;
+            margin-bottom:10px;
+            color: #548686;
+        }
+        .input{
+            display: block;
+            margin-bottom:30px;
+            width: 470px;
+            height: 39px;
+            padding: 7px 15px;
+            background-image: url('../../../img/dashboard/blobs/input.svg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            border-radius: 15px;
+            border: none;
+            font-size: 25px;
+            transition-duration: 1.5s;
+            &:focus{
+                outline: none;
+                background-image: url('../../../img/dashboard/blobs/input_foucs.svg');
+                background-repeat: no-repeat;
+                background-size: cover;
+                border-radius: 15px;
+            }
+        }
+        .main_PQ{
+            display: flex;
+            flex-wrap: wrap;
+
+            justify-content: space-between;
+            div{
+                // width: 50%;
+                
+                .main_input{
+                    display: block;
+                    margin-bottom:30px;
+                    width: 180px;
+                    height: 39px;
+                    padding: 7px 15px;
+                    background-image: url('../../../img/dashboard/blobs/main_input.svg');
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    border-radius: 15px;
+                    border: none;
+                    font-size: 25px;
+                    transition-duration: 1.5s;
+                    &:focus{
+                        outline: none;
+                        background-image: url('../../../img/dashboard/blobs/main_input_foucus.svg');
+                        background-repeat: no-repeat;
+                        background-size: cover;
+                        border-radius: 15px;
+                    }
+                }
+                .color_input{
+                    -webkit-appearance: none;
+                    -moz-appearance: none;
+                    appearance: none;
+                    width:54px;
+                    height:59px;
+                    background-color:transparent;
+                    border: none;
+                    cursor: pointer;
+                    &::-webkit-color-swatch{
+                        border: none;
+                        background-image: url('../../../img/dashboard/blobs/Exclude.svg');
+                        background-size: cover;
+                    }
+                }
+            }
+
+        }
+        .input_image{
+            position: relative;
+            height: 62%;
+            border-width: 3px;
+            border-color: #3F4045;
+            border-style: dashed;
+            border-radius: 15px;
+            width: 500px;
+            color: #548686;
+            margin-bottom: 23px;
+            background-image: url("../../../img/dashboard/avatars/Image upload-pana.svg");
+            background-position: center;
+            background-size: cover;
+            input{
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                opacity: 0;
+                cursor: pointer;
+            }
+        }
+        .select_height_53{
+            height: 53px;
+        }
+        .input_image_height_82{
+            height: 82%;
+        }
+        
+    }
+    .submit{
+        padding: 5px 20px;
+        font-size: 30px;
+        margin-left: 45%;
+        margin-top: 50px;
+        border-radius: 10px;
+        border: none;
+        color: #3F4045;
+        border-right: 1px solid #E9E8DE;
+        border-bottom: 1px solid #E9E8DE;
+        background: linear-gradient(289deg, rgba(233, 232, 222, 0.74) 18.09%, rgba(233, 232, 222, 0.00) 64.55%);
+        cursor: pointer;
+        &:hover{
+            transition-delay: 1s;
+            border-radius: 10px;
+            border-right: 1px solid #E9E8DE;
+            border-bottom: 1px solid #E9E8DE;
+            background: linear-gradient(284deg, rgba(0, 0, 0, 0.74) 30.5%, rgba(233, 232, 222, 0.74) 66.67%);
+            text-shadow: 2px 2px 4px #3F4045;
+        }
+    }
+}

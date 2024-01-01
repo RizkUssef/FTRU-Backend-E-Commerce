@@ -1,0 +1,154 @@
+.body{
+    .blobs{
+        .text{
+            width: 70%;
+            h1{
+                font-size: 40px;
+                font-weight: 900;
+                color: #3F4045;
+                margin-bottom: 15px;
+            }
+            .one{
+                font-size: 20px;
+                margin-bottom: 20px;
+            }
+            .two{
+                font-size: 20px;
+            }
+        }
+    }
+    .new_last{
+        .order_all{
+            margin-left: 100px;
+            display: flex;
+            gap: 100px;
+            height: 100vh;
+            margin: auto;
+            h1{
+                font-size: 40px;
+                margin-bottom: 30px;
+            }
+            .right,.left{
+                .labels{
+                    margin-left: 50px;
+                    margin-bottom: 20px;
+                    display: flex;
+                    gap: 70px;
+                    color: #548686;
+                    font-size: 20px;
+                }
+                .order_data{
+                    margin-left: 25px;
+                    margin-bottom: 20px;
+                    display: flex;
+                    gap: 57px;
+                    align-items: center;
+                    border-radius: 15px;
+                    background: #E9E8DE;
+                    box-shadow: 0px 0px 20px 3px rgba(233, 232, 222, 0.50);
+                    padding: 30px 20px;
+                    p{
+                        font-size: 18px;
+                    }
+                    .id{
+                        color: #548686;
+                    }
+                    .status{
+                        margin-left: 15px;
+                    }
+                    .date{
+                        margin-left: 5px;
+                    }
+                    .total{
+                        margin-left: -10px;
+                    }
+                }
+                .shipped{
+                    border-radius: 15px;
+                    background: #3F4045;
+                    box-shadow: 0px 0px 20px 3px rgba(233, 232, 222, 0.50);
+                    color: #E9E8DE;
+                    margin-left: 25px;
+                    margin-bottom: 20px;
+                    display: flex;
+                    gap: 57px;
+                    align-items: center;
+                    padding: 30px 20px;
+                    p{
+                        font-size: 18px;
+                    }
+                    .id{
+                        color: #548686;
+                    }
+                    .status{
+                        margin-left: 15px;
+                    }
+                    .date{
+                        margin-left: 5px;
+                    }
+                    .total{
+                        margin-left: -10px;
+                    }
+                }
+                .completed{
+                    border-radius: 15px;
+                    background: #548686;
+                    box-shadow: 0px 0px 20px 3px rgba(233, 232, 222, 0.50);
+                    color: #3F4045;
+                    margin-left: 25px;
+                    margin-bottom: 20px;
+                    display: flex;
+                    gap: 57px;
+                    align-items: center;
+                    padding: 30px 20px;
+                    p{
+                        font-size: 18px;
+                    }
+                    .id{
+                        color: #E9E8DE;
+                    }
+                    .status{
+                        margin-left: 15px;
+                    }
+                    .date{
+                        margin-left: 5px;
+                    }
+                    .total{
+                        margin-left: -10px;
+                    }
+                }
+            }
+            .left{
+                margin-top: 71px;
+            }
+        }
+
+    }
+    .loadmore{
+        grid-column: 5/6;
+        width: fit-content;
+        .link{
+            border-radius: 10px;
+            border-right: 1px solid #E9E8DE;
+            border-bottom: 1px solid #E9E8DE;
+            background: linear-gradient(289deg, rgba(233, 232, 222, 0.74) 18.09%, rgba(233, 232, 222, 0.00) 64.55%);
+            padding: 10px 20px;
+            margin-left: 10px;
+            a{
+                font-size: 25px;
+                color: #3F4045;
+                text-decoration: none;
+            }
+            &:hover{
+                cursor: pointer;
+                border-radius: 10px;
+                border-right: 1px solid #E9E8DE;
+                border-bottom: 1px solid #E9E8DE;
+                background: linear-gradient(284deg, rgba(0, 0, 0, 0.74) 30.5%, rgba(233, 232, 222, 0.74) 66.67%);
+                a{
+                text-shadow: 2px 2px 4px #3F4045;
+                }
+            }
+        }
+    }
+}

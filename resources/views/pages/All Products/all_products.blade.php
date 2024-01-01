@@ -6,7 +6,6 @@
     <section class="{{ $category->name }}">
     </section>
     @include('pages.includes.session')
-
     <section class="section_search">
         <form action="{{ route('search',["category_name"=>$category->name]) }}" method="POST">
             @csrf

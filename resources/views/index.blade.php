@@ -16,6 +16,7 @@
 
 <body>
     <!-- start of the header -->
+    @include('pages.includes.session')
     <header class="header">
         <div class="logo">
             <a href="{{ route('home') }}">
@@ -114,7 +115,7 @@
             @endforeach
         </section>
     </section>
-    <!-- end contant section -->
+    {{-- end contant section --}}
     {{-- start footer --}}
     @include('pages.includes.footer')
     {{-- end footer --}}

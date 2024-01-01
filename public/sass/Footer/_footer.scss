@@ -196,6 +196,11 @@
                         width: $footer_social_size_wh;
                         height: $footer_social_size_wh;
                     }
+                    &:hover{
+                        img{
+                            filter: drop-shadow(2px 2px 4px #3F4045);
+                        }
+                    }
                 }
             }
         }

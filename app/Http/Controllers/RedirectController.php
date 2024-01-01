@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\PageVisited;
 use App\Models\Cart;
 use App\Models\Country;
 use App\Models\Product;
@@ -9,6 +10,7 @@ use App\Models\Category;
 use App\Models\ProductColor;
 use App\Models\ProductColorSize;
 use App\Models\SubCategory;
+use App\Models\Visitor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,6 +18,9 @@ class RedirectController extends Controller
 {
     // !index
     public function Index(){
+        $countDate = Visitor::where("id",1)->first();
+        $count = $countDate->count;
+        PageVisited::dispatch($count);
         return view('index');
     }
 
