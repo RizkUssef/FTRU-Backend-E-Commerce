@@ -12,11 +12,15 @@
     </head>
     <body class="body">  
         @include('Dashboard.Admin Includes.header')
+        @include('Dashboard.Admin Includes.admin_session')
         @yield('content')
         @include('Dashboard.Admin Includes.footer')
+        @include('Dashboard.Admin Includes.search')
+        <script src="{{asset("js/showAdminSearch.js")}}"></script>
+        {{-- <script src="{{asset("js/search.js")}}"></script> --}}
+        <script src="{{asset("js/dashboardShowAllCate.js")}}"> </script>
         <script src="{{asset("js/dashboardActive.js")}}"></script>
         <script src="{{asset("js/error.js")}}"></script>
-        {{-- <script src="{{asset("js/admin nav.js")}}"></script> --}}
         <script src="{{asset("js/pagination.js")}}"></script>
     </body>
 </html>

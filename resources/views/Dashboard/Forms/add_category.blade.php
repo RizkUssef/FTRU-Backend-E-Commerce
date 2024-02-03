@@ -10,7 +10,7 @@
         <div class="category">
             <h3>TOTAL CATEGORY</h3>
             <img src="../../../img/dashboard/icons/category.png" alt="nobe">
-            <h1>{{$category->count()}}</h1>
+            <h1>{{$category_name->count()}}</h1>
         </div>
         <div class="text">
             <h1>FTRU TOTAL CATEGORY COUNTER</h1>

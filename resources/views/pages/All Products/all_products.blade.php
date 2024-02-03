@@ -7,11 +7,13 @@
     </section>
     @include('pages.includes.session')
     <section class="section_search">
-        <form action="{{ route('search',["category_name"=>$category->name]) }}" method="POST">
+        <form id="submit_search" action="{{ route('search',["category_name"=>$category->name]) }}" method="POST">
             @csrf
             <div class="search-container">
                 <input name="search" type="text" id="search" placeholder="Search">
                 <button type="submit"><img src="{{ asset('img/Stars/search green.png') }}" alt=""></button>
+            </div>
+            <div class="sugg_container">
             </div>
         </form>
     </section>

@@ -1,0 +1,74 @@
+.admin_search {
+    height: 100vh;
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: rgba($color: #3f4045, $alpha: 0.7);
+    backdrop-filter: blur(5px);
+    // filter: blur(10px);
+    .form_admin_search {
+        // z-index: 10;
+        width: 40%;
+        position: fixed;
+        top: 100px;
+        right: 0;
+        bottom: 0;
+        left: 30%;
+        .form_ad {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            .search {
+                box-shadow: 0px 0px 50px #000000;
+                color: #e9e8de;
+                width: 100%;
+                font-size: 30px;
+                padding: 8px 12px;
+                border: none;
+                background-color: #000000;
+                border-bottom-left-radius: 15px;
+                border-top-left-radius: 15px;
+                &:focus {
+                    outline: none;
+                }
+            }
+            .btn {
+                box-shadow: 0px 0px 50px #000000;
+                padding: 7px;
+                background-color: #000000;
+                border: none;
+                cursor: pointer;
+                border-top-right-radius: 15px;
+                border-bottom-right-radius: 15px;
+                img {
+                    width: 30px;
+                }
+            }
+        }
+        .sugg_container {
+            width: 100%;
+            box-shadow: 0px 10px 15px rgba(0,0,0, 0.4);
+            position: absolute;
+            z-index: 2;
+            border-radius: 15px;
+            background-color: #000000;
+            .list {
+                list-style: none;
+                border: 0.5px solid rgba(63, 64, 69, 0.5);
+                .list_item {
+                    color: #e9e8de;
+                    padding: 10px 10px;
+                    font-size: 20px;
+                    border-bottom: 0.5px solid rgba(63, 64, 69, 0.5);
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}

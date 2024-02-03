@@ -20,9 +20,13 @@ return new class extends Migration
             $table->decimal('shipping',8,2);
             $table->decimal('total',8,2);
             $table->integer('quantity');
+            $table->string('email');
+            $table->string('phone');
             $table->enum("status",['pending', 'processing', 'shipped', 'delivered'])->default("pending");
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('address_id');
+            $table->foreign('address_id')->references('id')->on('addresses');
             $table->unsignedBigInteger('cart_id');
             $table->foreign('cart_id')->references('id')->on('carts');
             $table->timestamps();

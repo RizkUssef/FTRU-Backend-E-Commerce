@@ -20,9 +20,11 @@
 @use 'Forms/forget_password';
 @use 'Forms/reset_password';
 @use 'Profile/edit_cart';
+@use 'Profile/order_details';
 @use 'Dashboard/home_dashboard';
 @use 'Dashboard/order_dashboard';
 @use 'Dashboard/Forms/add_product';
 @use 'Dashboard/Show All/all_categories';
 @use 'Dashboard/Show All/one_product_colors';
 @use 'Dashboard/Forms/loginAdmin';
+@use 'Dashboard/Show All/search';

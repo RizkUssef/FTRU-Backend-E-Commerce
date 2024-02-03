@@ -24,7 +24,7 @@ class IncrementVisitorCount
     public function handle(PageVisited $event): void
     {
         $get_count = Visitor::where("id",1)->first();
-        $newcount= $event->count + 1;
+        $newcount = $event->count + 1;
         $get_count->updateOrCreate(["id"=>1],[
             "count"=>$newcount
         ]);

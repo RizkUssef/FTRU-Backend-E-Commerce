@@ -1,5 +1,5 @@
 @extends('Dashboard.Admin Layout.layout')
-@section('title', $category->name . '' . "'s Category")
+@section('title', $category->name . '' . "'S Category")
 @section('content')
     <section class="blobs">
         <div class="category">
@@ -39,7 +39,7 @@
                     </div>
                     <div class="img_name">
                         <div class="image">
-                            <img src="{{ asset('img/Man/Jackets/Malakhi-jacket_Jackets_673_12.png') }}"
+                            <img src="{{ asset('img/comics/reset.jpeg') }}"
                                 alt="Subcategory picture" srcset="">
                         </div>
                         <div class="name">

@@ -54,13 +54,30 @@
                 @endforeach
             @endif
 
+            @if ($user_wishlist->isNotEmpty())
+            <div class="btn_contant">
+                <div class="align_btn">
+                    <div class="order_all">
+                        <form action="{{ route('add All To CartFromWishlist') }}" method="get">
+                            @csrf
+                            <button type="submit">ADD ALL TO CART</button>
+                        </form>
+                    </div>
+                    <div class="order_all">
+                        <form action="{{ route('remove all from wishlist') }}" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit">Delete All</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            @endif
         </section>
     </section>
-    @if ($user_wishlist->isNotEmpty())
-        <div class="add_all">
-            <a href="{{ route('add All To CartFromWishlist') }}">ADD ALL TO CART</a>
-        </div>
-    @endif
+
+
+
 @endsection
 @section('script')
     <script src="../js/nav.js"></script>

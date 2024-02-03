@@ -1,85 +1,12 @@
-let dash = document.getElementById('dash');
-let order = document.getElementById('order');
-let product = document.getElementById('product');
-let cate = document.getElementById('cate');
-let custumer = document.getElementById('custumer');
+let allLinks = document.querySelectorAll(".links a");
+let activePage = window.location.pathname;
 
-// dash
-dash.addEventListener('click',function (){
-    if (!dash.classList.contains("active")) {
-        dash.classList.add("active");
-        if (order.classList.contains("active")){
-            order.classList.remove("active");
-        } else if(product.classList.contains("active")){
-            product.classList.remove("active");
-        } else if(cate.classList.contains("active")){
-            cate.classList.remove("active");
-        } else if(custumer.classList.contains("active")){
-            custumer.classList.remove("active");
-        }
-    }
-});
+const pathParts = activePage.split("/");
+const firstPart = pathParts[1];
 
-// order
-order.addEventListener('click',function (){
-    if (!order.classList.contains("active")) {
-        order.classList.add("active");
-        if (dash.classList.contains("active")){
-            dash.classList.remove("active");
-        } else if(product.classList.contains("active")){
-            product.classList.remove("active");
-        } else if(cate.classList.contains("active")){
-            cate.classList.remove("active");
-        } else if(custumer.classList.contains("active")){
-            custumer.classList.remove("active");
-        }
-    }
-});
-
-// product
-product.addEventListener('click',function (){
-    if (!product.classList.contains("active")) {
-        product.classList.add("active");
-        if (order.classList.contains("active")){
-            order.classList.remove("active");
-        } else if(dash.classList.contains("active")){
-            dash.classList.remove("active");
-        } else if(cate.classList.contains("active")){
-            cate.classList.remove("active");
-        } else if(custumer.classList.contains("active")){
-            custumer.classList.remove("active");
-        }
-    }
-});
-
-// cate
-cate.addEventListener('click',function (){
-    if (!cate.classList.contains("active")) {
-        cate.classList.add("active");
-        if (order.classList.contains("active")){
-            order.classList.remove("active");
-        } else if(product.classList.contains("active")){
-            product.classList.remove("active");
-        } else if(dash.classList.contains("active")){
-            dash.classList.remove("active");
-        } else if(custumer.classList.contains("active")){
-            custumer.classList.remove("active");
-        }
-    }
-});
-
-// custumer
-custumer.addEventListener('click',function (){
-    if (!custumer.classList.contains("active")) {
-        custumer.classList.add("active");
-        if (order.classList.contains("active")){
-            order.classList.remove("active");
-        } else if(product.classList.contains("active")){
-            product.classList.remove("active");
-        } else if(cate.classList.contains("active")){
-            cate.classList.remove("active");
-        } else if(dash.classList.contains("active")){
-            dash.classList.remove("active");
-        }
+allLinks.forEach(function (link) {
+    // link.classList.remove("active");
+    if (link.href.includes(`${firstPart}`)) {
+        link.classList.add("active");
     }
 });

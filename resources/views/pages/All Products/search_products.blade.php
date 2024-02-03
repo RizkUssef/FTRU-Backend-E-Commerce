@@ -6,11 +6,13 @@
     @include('pages.includes.session')
 
     <section class="section_search">
-        <form action="{{ route('search') }}" method="POST">
+        <form id="submit_search" action="{{ route('search') }}" method="POST">
             @csrf
             <div class="search-container">
                 <input  name="search" type="text" id="search" placeholder="Search">
                 <button type="submit"><img src="{{ asset('img/Stars/search green.png') }}" alt=""></button>
+            </div>
+            <div class="sugg_container">
             </div>
         </form>
     </section>
@@ -38,7 +40,7 @@
                         <div class="inner_bg">
                             <div class="rate_number">
                                 @if ($product->productReview->avg('rating_value'))
-                                    <img src="../../../img/Stars/star.png" alt="no" srcset="">
+                                    <img src="{{asset('img/Stars/star.png')}}" alt="no" srcset="">
                                     <p>{{$product->productReview->avg('rating_value')}}</p>   
                                 @endif
                             </div>

@@ -3,7 +3,7 @@
     Check Your Email
 @endsection
 @section('content')
-    <section class="error">
+    <section class="error check_mail_fix">
         <div class="error_div">
             <h1>CHECK YOUR EMAIL</h1>
             <div class="img">

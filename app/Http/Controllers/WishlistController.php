@@ -54,7 +54,7 @@ class WishlistController extends Controller
                         'message' => 'Product added successfully',
                     ];
                     // return response()->json($response);
-                    return redirect()->back()->with("success", "Product added sussefully"); 
+                    return redirect()->back()->with("success", "Product added sussefully");
                 }
             } else {
                 return redirect()->back()->with('error', 'Something is wrong please try again');
@@ -75,6 +75,24 @@ class WishlistController extends Controller
             }
         } else {
             return redirect()->route('login')->with("error", "you must login first");
+        }
+    }
+
+    public function deleteAllFromWishlist()
+    {
+        $user = Auth::user();
+        if ($user) {
+            if ($user->user_type == 1) {
+                $wishlist_items = Wishlist::where('user_id', $user->id)->get();
+                foreach ($wishlist_items as $item) {
+                    $item->delete();
+                }
+                return redirect()->route('wishlist')->with('success', "You remove all items from your cart");
+            } else {
+                return redirect()->route('Register')->with('error', "Create your Account First");
+            }
+        } else {
+            return redirect()->route('Login')->with('error', 'You Must Login First');
         }
     }
 
@@ -194,5 +212,4 @@ class WishlistController extends Controller
             return redirect()->route('login')->with("error", "you must login first");
         }
     }
-
 }

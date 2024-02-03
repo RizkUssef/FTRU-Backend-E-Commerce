@@ -44,5 +44,12 @@ class Product extends Model
         return $this->hasMany(Review::class);
     }
     
+    // public function productOrderDetailOrder(){
+    //     return $this->belongsToMany(Order::class, 'order_details','product_id','order_id');
+    // }
+
+    // public function productOrderDetailProductCS(){
+    //     return $this->belongsToMany(ProductColorSize::class, 'order_details','product_id','product_color_size_id');
+    // }
 
 }

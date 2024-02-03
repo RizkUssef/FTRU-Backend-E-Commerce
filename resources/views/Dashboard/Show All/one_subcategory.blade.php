@@ -91,6 +91,14 @@
                         @endforeach
                         <p>{{ $allQuantity }}</p>
                     </div>
+                    <div class="options remove_margin">
+                        <form action="{{ route('deleteProduct',['category_id'=>$category->id,'subcategory_id'=>$subcategory->id,'product_id'=>encrypt($product->id)]) }}" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit"><img src="{{ asset('img/dashboard/icons/delete.png') }}" alt="not" srcset="">
+                            </button>
+                        </form>
+                    </div>
                 </div>
             @endforeach
         </div>

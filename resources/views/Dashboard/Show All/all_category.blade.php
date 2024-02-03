@@ -32,7 +32,7 @@
         <h1>CATEGORIES</h1>
         <div class="all_cate_blocks">
             {{-- {{$category_name}} --}}
-            @foreach ($category_name as $cate)
+            @foreach ($categories as $cate)
                 
                 <div class="cate">
                     <div class="id_link">
@@ -49,21 +49,12 @@
                     <div class="sub_category">
                         <h3>SUBCATEGORIES</h3>
                         <div class="subcate_links">
-                            {{-- added --}}
-                            @php
-                                $count=0;
-                            @endphp
-                            @foreach ($cate->categorySubcategory as $subcate)
+                            @foreach ($cate->categorySubcategory()->limit(4)->get() as $subcate)
                                 @php
-                                    $count++;
                                     $db_allsubname = $subcate->name;
                                     $show_allsubname = str_replace('_', ' ', $db_allsubname);
                                 @endphp
-                                <a href="#">{{ $show_allsubname }}</a>
-                                {{-- added --}}
-                                @if ($count == 4)
-                                    @break
-                                @endif
+                                <a href="{{ route('Show_one subcategory', ['category_id' => encrypt($cate->id), 'subcategory_id' => encrypt($subcate->id)]) }}">{{ $show_allsubname }}</a>
                             @endforeach
                         </div>
                     </div>
@@ -83,8 +74,7 @@
             @endforeach
         </div>
     </section>
-    {{ $category_name->links('vendor.pagination.custom') }}
-
+    {{ $categories->links('vendor.pagination.custom') }}
 
     <section class="add_links">
         <div class="add_cate">

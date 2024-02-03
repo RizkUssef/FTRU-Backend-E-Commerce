@@ -20,7 +20,6 @@ class PageVisited
     public $count;
     public function __construct($count)
     {
-    // public $count;
         $this->count = $count;
     }
 

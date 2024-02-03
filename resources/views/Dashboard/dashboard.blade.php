@@ -5,246 +5,158 @@
 @endsection
 
 @section('content')
+
     @include('pages.includes.session')
-    {{-- {{Auth::user()}} --}}
     <section class="blobs">
         <div class="visitor">
             <h3>TOTAL VISITORS</h3>
-            <img src="{{asset('img/dashboard/icons/customer.png')}}" alt="nobe">
-            <h1>{{$visitorCount}}</h1>
+            <img src="{{ asset('img/dashboard/icons/customer.png') }}" alt="nobe">
+            <h1>{{ $allVisitors->count }}</h1>
         </div>
         <div class="customer">
             <h3>TOTAL CUSTOMERS</h3>
-            <img src="{{asset('img/dashboard/icons/browser (1).png')}}" alt="nobe">
-            <h1>{{$allCust}}</h1>
+            <img src="{{ asset('img/dashboard/icons/browser (1).png') }}" alt="nobe">
+            <h1>{{ $allCust->count() }}</h1>
         </div>
         <div class="product">
             <h3>TOTAL PRODUCTS</h3>
-            <img src="{{asset('img/dashboard/icons/box.png')}}" alt="nobe">
-            <h1>{{$allProduct}}</h1>
+            <img src="{{ asset('img/dashboard/icons/box.png') }}" alt="nobe">
+            <h1>{{ $allProduct->count() }}</h1>
         </div>
         <div class="order">
             <h3>TOTAL ORDERS</h3>
-            <img src="{{asset('img/dashboard/icons/checkout.png')}}" alt="nobe">
-            <h1>{{$allOrder}}</h1>
+            <img src="{{ asset('img/dashboard/icons/checkout.png') }}" alt="nobe">
+            <h1>{{ $allOrder->count() }}</h1>
         </div>
         <div class="category">
             <h3>TOTAL CATEGORY</h3>
-            <img src="{{asset('img/dashboard/icons/category.png')}}" alt="nobe">
+            <img src="{{ asset('img/dashboard/icons/category.png') }}" alt="nobe">
             <h1>{{ $category_name->count() }}</h1>
         </div>
     </section>
 
-    <section class="charts">
-        <div class="bar">
-
-        </div>
-        <div class="pie">
-
-        </div>
-    </section>
-
     <section class="new_last">
-        <div class="new_customers">
-            <h1>NEW CUSTOMERS</h1>
-            <div class="labels">
-                <h3>ID</h3>
-                <h3>PHOTO</h3>
-                <h3>FULL NAME</h3>
-                <h3>EMAIL</h3>
-                <h3>COUNTRY</h3>
-                <h3>STATUS</h3>
+        @if ($allCust->isEmpty())
+            <div class="new_customers">
+                <h1>NEW CUSTOMERS</h1>
+                <h1 class="info_title" style="color: #bf3b3b">There are no customers yet</h1>
             </div>
-            <div class="customer_data">
-                <div class="id">
-                    <p>#18</p>
+        @else
+            <div class="new_customers">
+                <h1>NEW CUSTOMERS</h1>
+                <div class="labels">
+                    <h3>ID</h3>
+                    <h3>PHOTO</h3>
+                    <h3>FULL NAME</h3>
+                    <h3>EMAIL</h3>
+                    <h3 class="country_label">COUNTRY</h3>
+                    <h3>STATUS</h3>
                 </div>
-                <div class="img">
-                    <img src="" alt="" srcset="">
-                </div>
-                <div class="name">
-                    <p>MR. MJKNF</p>
-                </div>
-                <div class="email">
-                    <p>urgkus@ndvw.com</p>
-                </div>
-                <div class="country">
-                    <p>EG</p>
-                </div>
-                <div class="status">
-                    <p>ACTIVE</p>
-                </div>
+                @foreach ($allCust as $item)
+                    <div class="customer_data">
+                        <div class="id">
+                            <p>{{ '# ' . $item->id }}</p>
+                        </div>
+                        <div class="img">
+                            @if ($item->image == null)
+                                <img src="{{ asset('img/Stars/user (4).png') }}" alt="no">
+                            @else
+                                <img src="{{ asset("storage/$item->image") }}" alt="no" srcset="">
+                            @endif
+                        </div>
+                        <div class="name">
+                            <p>{{ $item->name }}</p>
+                        </div>
+                        <div class="email">
+                            <p>{{ $item->email }}</p>
+                        </div>
+                        <div class="country">
+                            <p>{{ $item->userCountry->name }}</p>
+                        </div>
+                        <div class="status">
+                            <p>
+                                @if ($item->userCart()->exists())
+                                    ACTIVE
+                                @else
+                                    PASSIVE
+                                @endif
+                            </p>
+                        </div>
+                    </div>
+                @endforeach
             </div>
-            <div class="customer_data">
-                <div class="id">
-                    <p>#18</p>
-                </div>
-                <div class="img">
-                    <img src="" alt="" srcset="">
-                </div>
-                <div class="name">
-                    <p>MR. MJKNF</p>
-                </div>
-                <div class="email">
-                    <p>urgkus@ndvw.com</p>
-                </div>
-                <div class="country">
-                    <p>EG</p>
-                </div>
-                <div class="status">
-                    <p>ACTIVE</p>
-                </div>
-            </div>
-            <div class="customer_data">
-                <div class="id">
-                    <p>#18</p>
-                </div>
-                <div class="img">
-                    <img src="" alt="" srcset="">
-                </div>
-                <div class="name">
-                    <p>MR. MJKNF</p>
-                </div>
-                <div class="email">
-                    <p>urgkus@ndvw.com</p>
-                </div>
-                <div class="country">
-                    <p>EG</p>
-                </div>
-                <div class="status">
-                    <p>ACTIVE</p>
-                </div>
-            </div>
-            <div class="customer_data">
-                <div class="id">
-                    <p>#18</p>
-                </div>
-                <div class="img">
-                    <img src="" alt="" srcset="">
-                </div>
-                <div class="name">
-                    <p>MR. MJKNF</p>
-                </div>
-                <div class="email">
-                    <p>urgkus@ndvw.com</p>
-                </div>
-                <div class="country">
-                    <p>EG</p>
-                </div>
-                <div class="status">
-                    <p>ACTIVE</p>
-                </div>
-            </div>
-        </div>
+        @endif
 
-        <div class="last_order">
-            <h1>LAST ORDERS</h1>
-            <div class="labels">
-                <h3>ID</h3>
-                <h3>NAME</h3>
-                <h3>TOTAL</h3>
-                <h3>STATUS</h3>
+        @if ($allOrder->isEmpty())
+            <div class="last_order">
+                <h1>LAST ORDERS</h1>
+                <h1 class="info_title" style="color: #bf3b3b">There are no orders yet</h1>
             </div>
-            <div class="order_data">
-                <div class="id">
-                    <p>#18</p>
+        @else
+            <div class="last_order">
+                <h1>LAST ORDERS</h1>
+                <div class="labels">
+                    <h3>ID</h3>
+                    <h3>NAME</h3>
+                    <h3>TOTAL</h3>
+                    <h3>STATUS</h3>
                 </div>
-                <div class="name">
-                    <p>MR. MJKNF</p>
+
+                @foreach ($allCust as $customer)
+                @foreach ($customer->userOrder()->latest("created_at")->take(1)->get() as $order)
+                <div class="order_data">
+                    <div class="id">
+                        <p>{{ '#'.$loop->iteration }}</p>
+                    </div>
+                    <div class="name">
+                        <p>{{ $order->orderUser->name }}</p>
+                    </div>
+                    <div class="total">
+                        <p>{{$order->total .'$'}}</p>
+                    </div>
+                    <div class="status">
+                        <p>{{ $order->status }}</p>
+                    </div>
                 </div>
-                <div class="total">
-                    <p>1250 $</p>
-                </div>
-                <div class="status">
-                    <p>SHIPPED</p>
-                </div>
+                @endforeach
+            @endforeach
+
             </div>
-            <div class="order_data">
-                <div class="id">
-                    <p>#18</p>
-                </div>
-                <div class="name">
-                    <p>MR. MJKNF</p>
-                </div>
-                <div class="total">
-                    <p>1250 $</p>
-                </div>
-                <div class="status">
-                    <p>SHIPPED</p>
-                </div>
-            </div>
-            <div class="order_data">
-                <div class="id">
-                    <p>#18</p>
-                </div>
-                <div class="name">
-                    <p>MR. MJKNF</p>
-                </div>
-                <div class="total">
-                    <p>1250 $</p>
-                </div>
-                <div class="status">
-                    <p>SHIPPED</p>
-                </div>
-            </div>
-            <div class="order_data">
-                <div class="id">
-                    <p>#18</p>
-                </div>
-                <div class="name">
-                    <p>MR. MJKNF</p>
-                </div>
-                <div class="total">
-                    <p>1250 $</p>
-                </div>
-                <div class="status">
-                    <p>SHIPPED</p>
-                </div>
-            </div>
-        </div>
+        @endif
     </section>
+
     <section class="resent">
         <h1>RESENT REVIEW</h1>
         <div class="all_review">
-            <div class="review_1">
-                <div class="top">
-                    <div class="img">
-                        <img src="" alt="">
+            @foreach ($allCust as $customer)
+                @foreach ($customer->userReview()->latest('created_at')->take(1)->get() as $review)
+                    <div class="review_1">
+                        <div class="top">
+                            <div class="img">
+                                @php
+                                    $image = $review->reviewUser->image;
+                                @endphp
+                                @if ($image == null)
+                                    <img src="{{ asset('img/Stars/user (4).png') }}" alt="no">
+                                @else
+                                    <img src="{{ asset("storage/$image") }}" alt="no">
+                                @endif
+                            </div>
+                            <div class="name">
+                                <h1>{{ $review->reviewUser->name }}</h1>
+                            </div>
+                        </div>
+                        <div class="comment">
+                            @if ($review->comment)
+                                <p>{{ $review->comment }}</p>
+                            @else
+                                <p>There's no Comment</p>
+                            @endif
+                        </div>
                     </div>
-                    <div class="name">
-                        <h1>MR. SDJVBK</h1>
-                    </div>
-                </div>
-                <div class="comment">
-                    <p>ivhsh frghrhg udrg o8hgoudsrgod</p>
-                </div>
-            </div>
-            <div class="review_2">
-                <div class="top">
-                    <div class="img">
-                        <img src="" alt="">
-                    </div>
-                    <div class="name">
-                        <h1>MR. SDJVBK</h1>
-                    </div>
-                </div>
-                <div class="comment">
-                    <p>ivhsh frghrhg udrg o8hgoudsrgod</p>
-                </div>
-            </div>
-            <div class="review_3">
-                <div class="top">
-                    <div class="img">
-                        <img src="" alt="">
-                    </div>
-                    <div class="name">
-                        <h1>MR. SDJVBK</h1>
-                    </div>
-                </div>
-                <div class="comment">
-                    <p>ivhsh frghrhg udrg o8hgoudsrgod</p>
-                </div>
-            </div>
+                @endforeach
+            @endforeach
         </div>
     </section>
+
 @endsection

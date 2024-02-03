@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ApiController;
+use App\Http\Controllers\ProductController;
+use App\Models\ProductColor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -25,3 +27,5 @@ Route::post("insert_subcate",[ApiController::class,"insertSubcategory"]);
 Route::post("insert_product",[ApiController::class,"insertProduct"]);
 Route::post("update_pro_size/{cate_id}/{sub_id}/{prod_id}",[ApiController::class,"insertNewColor"]);
 Route::get("update_pro_size/{id}/{sub_id}",[ApiController::class,"updateMakeup"]);
+
+Route::get('getallpro',[ProductController::class,"productSearchApi"]);

@@ -11,8 +11,8 @@
             @if($errors->has('msg'))
                 {{ $errors->first('msg') }}
             @endif
-            @if (session()->has('success'))
-                {{session('success')}}
+            @if (session()->has("error"))
+                <h1 class="info_title" style="color: #bf3b3b">{{session()->get("error")}} </h1>  
             @endif
             <form action="{{route('login handle')}}" method="POST">
                 @csrf

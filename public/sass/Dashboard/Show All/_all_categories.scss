@@ -84,11 +84,17 @@
                     }
                 }
                 .name{
+                    width: 150px;
+                    display: flex;
+                    flex-wrap: wrap;
+
                     h1{
                         font-size: 35px;
                         margin-bottom: 0px;
-                        // margin-right: 10px;
-                        // padding-right: 10px;
+                        // max-width: 300px; 
+                        // overflow: hidden; 
+                        // text-overflow: ellipsis; 
+                        // white-space: nowrap;
                     }
                 }
             }
@@ -102,7 +108,8 @@
                 }
                 .subcate_links{
                     display: flex;
-                    justify-content: center;
+                    justify-content: flex-start;
+                    flex-wrap: wrap;
                     gap: 15px;
                     a{
                         text-decoration: none;
@@ -212,6 +219,7 @@
                     color: #548686;
                 }
             }
+
         }
         .one_prod{
             width: 90%;
@@ -333,6 +341,9 @@
                     }
                 }
                 .name{
+                    width: 150px;
+                    display: flex;
+                    flex-wrap: wrap;
                     h1{
                         font-size: 30px;
                         margin-bottom: 10px;
@@ -458,6 +469,9 @@
                     }
                 }
                 .name{
+                    display: flex;
+                    flex-wrap: wrap;
+                    width: 15px;
                     h1{
                         font-size: 30px;
                         margin-bottom: 10px;
@@ -538,6 +552,11 @@
             }
         }
     }
+}
+
+.remove_margin{
+    margin-top: 0px;
+    margin-bottom: 15px;
 }
 
 .add_links{

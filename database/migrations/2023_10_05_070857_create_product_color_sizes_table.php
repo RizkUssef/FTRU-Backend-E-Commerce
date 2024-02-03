@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('product_color_sizes', function (Blueprint $table) {
             $table->id();
             $table->enum("stock",["in_stock","out_of_stock"])->default("out_of_stock");
-            $table->integer('quantity');
+            $table->integer('quantity')->default(1);
             $table->string("image");
             $table->unsignedBigInteger('product_colors_id');
             $table->foreign('product_colors_id')->references('id')->on('product_colors');

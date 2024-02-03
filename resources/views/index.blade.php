@@ -27,15 +27,24 @@
             <img src="{{ asset('img/Blob/logo2.svg') }}" alt="">
         </div>
         <ul class="nav-links">
-            @auth
-                <div class="cart">
-                    <a href="{{ route('cart') }}"><img src="{{ asset('img/Stars/shopping-cart.png') }}" alt=""
-                            srcset=""></a>
-                </div>
-                <div class="profile">
-                    <a href="{{ route('user_profile') }}"><img src="{{ asset('img/Stars/user (1).png') }}"
-                            alt=""></a>
-                </div>
+            @if (Auth::check())
+                @if (Auth::user()->user_type == 1)
+                    <div class="cart">
+                        <a href="{{ route('cart') }}"><img src="{{ asset('img/Stars/shopping-cart.png') }}"
+                                alt="no"></a>
+                    </div>
+                    <div class="profile">
+                        <a href="{{ route('user_profile') }}"><img src="{{ asset('img/Stars/user (1).png') }}"
+                                alt="no"></a>
+                    </div>
+                @else
+                    <div class="register" style="margin-top: 12px ">
+                        <a href="{{ route('register') }}">Register</a>
+                    </div>
+                    <div class="login" style="margin-top: 12px">
+                        <a href="{{ route('login') }}">Login</a>
+                    </div>
+                @endif
             @else
                 <div class="register" style="margin-top: 12px ">
                     <a href="{{ route('register') }}">Register</a>
@@ -43,7 +52,7 @@
                 <div class="login" style="margin-top: 12px">
                     <a href="{{ route('login') }}">Login</a>
                 </div>
-            @endauth
+            @endif
         </ul>
     </header>
     <!-- end of the header  -->
@@ -68,16 +77,16 @@
                 @foreach ($category->categorySubcategory as $subcat)
                     @foreach ($subcat->subcategoryProduct as $product)
                         @foreach ($product->productReview as $review)
-                            @if ($product->productReview->avg('rating_value')>=4)
+                            @if ($product->productReview->avg('rating_value') >= 4)
                                 <div class="first_product">
                                     <a
                                         href="{{ route('one product', ['category_name' => $category->name, 'subcategory_name' => $subcat->name, 'product_id' => $product->id]) }}">
                                         <div class="inner_bg">
                                             <div class="rate_number">
                                                 {{-- @if ($product->productReview->avg('rating_value')) --}}
-                                                    <img src="{{ asset('img/Stars/star.png') }}" alt="Ward"
-                                                        srcset="">
-                                                    <p>{{ $product->productReview->avg('rating_value') }}</p>
+                                                <img src="{{ asset('img/Stars/star.png') }}" alt="Ward"
+                                                    srcset="">
+                                                <p>{{ $product->productReview->avg('rating_value') }}</p>
                                                 {{-- @endif --}}
                                             </div>
                                             <div class="pro_img">
@@ -89,14 +98,14 @@
                                             <div class="price_stock">
                                                 @if ($product->main_discount)
                                                     <div class="price">
-                                                        <p>{{$product->main_price ." $"}}</p> 
+                                                        <p>{{ $product->main_price . " $" }}</p>
                                                     </div>
                                                     <div class="price_disc">
                                                         @php
-                                                            $price_after_disc = $product->main_price - ($product->main_price * ($product->main_discount/100));
+                                                            $price_after_disc = $product->main_price - $product->main_price * ($product->main_discount / 100);
                                                         @endphp
                                                         {{-- <p>{{"discount  ". $product->main_discount. " %" }}</p> --}}
-                                                        <p>{{ $price_after_disc. " $" }}</p>
+                                                        <p>{{ $price_after_disc . " $" }}</p>
                                                     </div>
                                                 @else
                                                     <div class="price_disc">
@@ -116,6 +125,7 @@
         </section>
     </section>
     {{-- end contant section --}}
+
     {{-- start footer --}}
     @include('pages.includes.footer')
     {{-- end footer --}}

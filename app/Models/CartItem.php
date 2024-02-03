@@ -20,7 +20,7 @@ class CartItem extends Model
     ];
 
     public function cartitemProuductSC(){
-        return $this->hasMany(ProductColorSize::class,"product_color_size_id");
+        return $this->hasMany(ProductColorSize::class);
     }
 
     public function cartitemCart(){

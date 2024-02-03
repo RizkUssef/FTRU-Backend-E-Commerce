@@ -50,6 +50,10 @@
                     text-align: center;
                     h1{
                         font-size: $product_name_size;
+                        overflow: hidden;
+                        white-space: wrap;
+                        text-overflow: ellipsis;
+                        max-width: 250px;
                     }
                 }
                 .price_stock{

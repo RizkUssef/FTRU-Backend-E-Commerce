@@ -7,6 +7,9 @@
         <div class="containt">
 
             <h1 class="reg">Register</h1>
+            @if (session()->has("error"))
+            <h1 class="info_title" style="color: #bf3b3b">{{session()->get("error")}} </h1>  
+            @endif
             <form action="{{route('handle_register')}}" method="POST">
                 @csrf
                 <label class="reg_label" for="">Name</label>
