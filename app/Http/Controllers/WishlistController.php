@@ -39,7 +39,7 @@ class WishlistController extends Controller
     {
         $user = Auth::user();
         if ($user) {
-            $product = Product::findOrFail($request->product_id);
+            $product = Product::where("id",$request->product_id)->where('delete_status','No')->first();
             if ($product) {
                 $check = Wishlist::where('product_id', $product->id)->first();
                 if ($check) {
@@ -100,7 +100,7 @@ class WishlistController extends Controller
     {
         $user = Auth::user();
         if ($user) {
-            $product = Product::findOrFail(decrypt($request->product_id));
+            $product = Product::where("id",decrypt($request->product_id))->where('delete_status','No')->first();
             if ($product) {
                 $user_cart = Cart::where("user_id", $user->id)->first();
                 $user_cart_id = null;
@@ -157,7 +157,7 @@ class WishlistController extends Controller
             $wishlistItems = Wishlist::where('user_id', $user->id)->get();
             if ($wishlistItems) {
                 foreach ($wishlistItems as $oneitem) {
-                    $product = Product::where("id", $oneitem->product_id)->first();
+                    $product = Product::where("id", $oneitem->product_id)->where('delete_status','No')->first();
                     if ($product) {
                         $user_cart = Cart::where("user_id", $user->id)->first();
                         $user_cart_id = null;

@@ -31,8 +31,10 @@
                             <form action="{{ route('add wishlist to cart') }}" method="post">
                                 @csrf
                                 <input type="hidden" name="product_id" value="{{ encrypt($prod->id) }}">
-                                <input type="hidden" name="color" value="{{ $prod->productColor->first()->color }}">
-                                <input type="hidden" name="size" value="{{ $prod->productSize->first()->size }}">
+                                <input type="hidden" name="color" value="{{ $prod->productColor->first->color->color }}">
+                                <input type="hidden" name="size" value="{{ $prod->productSize->first->size->size }}">
+                                {{-- {{$prod->productColor->first->color->color}}
+                                {{$prod->productSize->first->size->size}} --}}
                                 <button type="submit"><img src="{{ asset('img/Stars/cart.png') }}" alt="no"></button>
                             </form>
                             <form action="{{ route('remove from wishlist', ['wishlist_item_id' => $wishlist_data->id]) }}"

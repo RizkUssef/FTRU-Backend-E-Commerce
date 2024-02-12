@@ -31,7 +31,8 @@ class EditMainProductRequest extends FormRequest
             "color"=>["regex:/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/"],
             "quantity"=>"required|numeric",
             "image" => "nullable|image|mimes:jpeg,png,jpg,gif|max:2048",
-            "status" => ["required",Rule::in('show', 'hide')]
+            "status" => ["required",Rule::in('show', 'hide')],
+            "delete_status" => ["required",Rule::in('Yes', 'No')],
         ];
     }
 }

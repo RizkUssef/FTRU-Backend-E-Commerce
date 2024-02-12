@@ -4,9 +4,9 @@
     height: 100vh;
     width: 100%;
     // margin-top:-96PX;
-    background-image: url("../img/Background/all/man_extra_2.jpg");
-    background-size: cover;
-    background-size: cover;
+    background-image: url("../../img/Background/all/men cate.jpg");
+    background-size: contain;
+    // background-size: cover;
     background-position: center;
     &::before {
         content: "";
@@ -185,6 +185,23 @@ hr {
                 .dropdown-content {
                     display: block;
                 }
+            }
+        }
+    }
+
+    .no_products {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .text_container {
+            background-color: #e9e8de;
+            padding: 50px;
+            border-radius: 25px;
+            h1 {
+                color: #bf623b;
+                font-size: 50px;
+                text-transform: capitalize;
             }
         }
     }
@@ -468,7 +485,7 @@ hr {
             background-color: #ffffff;
             width: 450px;
         }
-        .sugg_container{
+        .sugg_container {
             width: 460px;
         }
     }
@@ -532,7 +549,7 @@ hr {
             background-color: #ffffff;
             width: 450px;
         }
-        .sugg_container{
+        .sugg_container {
             width: 460px;
         }
     }

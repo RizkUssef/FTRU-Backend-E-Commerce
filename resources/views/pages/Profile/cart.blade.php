@@ -24,7 +24,7 @@
                     $product_id = DB::table('product_colors')->select("product_id")->where("id",$product_sc->product_colors_id)->first();
                     $product_data = DB::table('products')->where("id",$product_id->product_id)->first();
                 @endphp
-                <div class="order_history_list">
+                <div class="order_history_list @if ($product_data->delete_status == "Yes") before @endif ">
                     <div class="image_cont">
                         <img src="{{asset("storage")."/".$product_sc->image}}" alt="">
                     </div>

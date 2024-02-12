@@ -525,7 +525,7 @@
   .contain_all .MEN_X {
     width: auto;
     height: 450px;
-    background-image: url("../img/Background/all/man bg .jpg");
+    background-image: url("../../img/Background/all/man_bg_index_last_3.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -647,7 +647,7 @@
   .contain_all .MEN_X {
     width: auto;
     height: 100vh;
-    background-image: url("../img/Background/all/man bg .jpg");
+    background-image: url("../../img/Background/all/man_bg_index_last_3.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -763,7 +763,7 @@
   .contain_all .MEN_X {
     width: auto;
     height: 100vh;
-    background-image: url("../img/Background/all/man bg .jpg");
+    background-image: url("../../img/Background/all/man_bg_index_last_3.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -1635,9 +1635,8 @@ nav {
 .MEN {
   height: 100vh;
   width: 100%;
-  background-image: url("../img/Background/all/man_extra_2.jpg");
-  background-size: cover;
-  background-size: cover;
+  background-image: url("../../img/Background/all/men cate.jpg");
+  background-size: contain;
   background-position: center;
 }
 .MEN::before {
@@ -1820,6 +1819,22 @@ hr {
 }
 .man_product .title .sub_category_links:hover .dropdown-content {
   display: block;
+}
+.man_product .no_products {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.man_product .no_products .text_container {
+  background-color: #e9e8de;
+  padding: 50px;
+  border-radius: 25px;
+}
+.man_product .no_products .text_container h1 {
+  color: #bf623b;
+  font-size: 50px;
+  text-transform: capitalize;
 }
 .man_product .first_product {
   display: flex;
@@ -4302,6 +4317,31 @@ hr {
 .contant_info_order .next_container .order_history_list .options a img {
   width: 25px;
   height: 25px;
+}
+.contant_info_order .next_container .before {
+  position: relative;
+}
+.contant_info_order .next_container .before::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: rgba(63, 64, 69, 0.3);
+  border-radius: 25px;
+  -webkit-backdrop-filter: blur(3px);
+          backdrop-filter: blur(3px);
+}
+.contant_info_order .next_container .before::after {
+  content: "Unavailable Anymore";
+  color: #e2574c;
+  font-size: 50px;
+  position: absolute;
+  top: 35%;
+  bottom: 0;
+  right: 0;
+  left: 70px;
 }
 
 .add_all {

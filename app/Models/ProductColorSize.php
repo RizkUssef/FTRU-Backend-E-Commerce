@@ -17,27 +17,31 @@ class ProductColorSize extends Model
         'product_colors_id',
         'product_sizes_id',
         'created_at',
-        'updated_at'
+        'updated_at',
     ];
-    
-    public function productcolorsizeCartItem(){
+
+    public function productcolorsizeCartItem()
+    {
         return $this->belongsTo(CartItem::class);
     }
 
-    public function productcolorsizeReview(){
+    public function productcolorsizeReview()
+    {
         return $this->hasMany(Review::class);
     }
 
-    public function productCSOrder(){
-        return $this->belongsToMany(Order::class, 'order_details','product_color_size_id','order_id')->withPivot('id','product_color_size_id','order_id');
+    public function productCSOrder()
+    {
+        return $this->belongsToMany(Order::class, 'order_details', 'product_color_size_id', 'order_id')->withPivot('id', 'product_color_size_id', 'order_id');
     }
 
-    public function ProCSProColor(){
-        return $this->belongsTo(ProductColor::class,'product_colors_id','id');
+    public function ProCSProColor()
+    {
+        return $this->belongsTo(ProductColor::class, 'product_colors_id', 'id');
     }
 
-    public function ProCSProSize(){
-        return $this->belongsTo(ProductSize::class,'product_sizes_id','id');
+    public function ProCSProSize()
+    {
+        return $this->belongsTo(ProductSize::class, 'product_sizes_id', 'id');
     }
-
 }

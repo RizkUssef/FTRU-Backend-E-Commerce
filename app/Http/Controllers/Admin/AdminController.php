@@ -13,9 +13,11 @@ use App\Models\SubCategory;
 use App\Models\ProductColor;
 use Illuminate\Http\Request;
 use App\Models\ProductColorSize;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\Admin\EditOrderRequest;
 use App\Http\Requests\Admin\AddProductRequest;
 use App\Http\Requests\Admin\LoginAdminRequest;
 use App\Http\Requests\Admin\AddCategoryRequest;
@@ -23,7 +25,11 @@ use App\Http\Requests\Admin\AddSubCategoryRequest;
 use App\Http\Requests\Admin\EditSubProductRequest;
 use App\Http\Requests\Admin\EditMainProductRequest;
 use App\Http\Requests\Admin\AddProductColorSizeRequest;
-use App\Http\Requests\Admin\EditOrderRequest;
+use App\Models\CartItem;
+use App\Models\OrderDetail;
+
+use function PHPUnit\Framework\isEmpty;
+use function PHPUnit\Framework\isNull;
 
 class AdminController extends Controller
 {
@@ -52,10 +58,13 @@ class AdminController extends Controller
     {
         $allProduct = Product::all();
         $allCust = User::where('user_type', '1')->orderBy('created_at', 'desc')->take(5)->get();
-        $allOrder = Order::orderBy('created_at', 'desc')->take(5)->get();
+        // ! best way for last order
+        // $allOrder = User::where('user_type', '1')->with('lastOrder')->orderBy('created_at', 'desc')->limit(5)->get();
+        $users = User::where('user_type', '1')->orderBy('created_at', 'desc')->get();
         $allVisitors = Visitor::where("id", 1)->first();
+        $allOrder = Order::all();
         $allRev = Review::latest('created_at')->groupBy('user_id')->limit(5)->get();
-        return view('Dashboard.dashboard', compact('allProduct', 'allCust', 'allOrder', 'allVisitors', 'allRev'));
+        return view('Dashboard.dashboard', compact('allProduct', 'allCust', 'users', 'allVisitors', 'allOrder', 'allRev'));
     }
 
     public function categoryForm()
@@ -376,6 +385,7 @@ class AdminController extends Controller
         return view('Dashboard.Show All.all_orders');
     }
 
+    // main pro delete {{delete all and add status delete}}
     public function deleteMainProduct($category_id, $subcategory_id, $product_id)
     {
         $user = Auth::user();
@@ -388,6 +398,26 @@ class AdminController extends Controller
                     $product = Product::where('id', decrypt($product_id))->first();
                     foreach ($product->productColor as $productColors) {
                         foreach ($productColors->colorSize as $productCSs) {
+                            $proCartItem = CartItem::where('product_color_size_id', '=', $productCSs->pivot->id)->first();
+                            $proOrderDetails = OrderDetail::where('product_color_size_id', '=', $productCSs->pivot->id)->first();
+                            if ($proOrderDetails) {
+                                $order = Order::where("id", $proOrderDetails->order_id)->first();
+                                if ($order->status != 'Delivered') {
+                                    return redirect()->route('Show_one subcategory', ['category_id' => encrypt($category->id), 'subcategory_id' => encrypt($subcat->id)])->with('error', "This product is order and the it's status is $order->status");
+                                } else {
+                                    $product->update([
+                                        'delete_status' => 'Yes'
+                                    ]);
+                                    return redirect()->route('Show_one subcategory', ['category_id' => encrypt($category->id), 'subcategory_id' => encrypt($subcat->id)])->with('error', "This product is present in either an order and will be deleted within one week.");
+                                }
+                            }
+
+                            if ($proCartItem) {
+                                $product->update([
+                                    'delete_status' => 'Yes'
+                                ]);
+                                return redirect()->route('Show_one subcategory', ['category_id' => encrypt($category->id), 'subcategory_id' => encrypt($subcat->id)])->with('error', "This product is present in a cart item and will be deleted within one week.");
+                            }
                             if ($productCSs->pivot->image != null) {
                                 Storage::delete($productCSs->pivot->image);
                             }
@@ -398,10 +428,24 @@ class AdminController extends Controller
                     foreach ($product->productSize as $subProductSize) {
                         $subProductSize->delete();
                     }
+                    // get wishlist
+                    $proWishlist = $product->productWishlist;
+                    if ($proWishlist) {
+                        foreach ($proWishlist as $proWish) {
+                            $proWish->pivot->delete();
+                        }
+                    }
+                    // get review
+                    $proReview = $product->productReview;
+                    if ($proReview) {
+                        foreach ($proReview as $pro) {
+                            $pro->delete();
+                        }
+                    }
                     if ($product->image != null) {
                         Storage::delete($product->image);
-                        $product->delete();
                     }
+                    $product->delete();
                     return redirect()->route('Show_one subcategory', ['category_id' => encrypt($category->id), 'subcategory_id' => encrypt($subcat->id)])->with('success', "product is deleted successfully");
                 } else {
                     return redirect()->back()->with("error", "This subcategory does not exist");
@@ -434,6 +478,26 @@ class AdminController extends Controller
                                 if ($productCS->image != null) {
                                     Storage::delete($productCS->image);
                                 }
+                                // ! delete cart and order
+                                $proCartItem = CartItem::where('product_color_size_id', '=', $productCS->id)->first();
+                                $proOrderDetails = OrderDetail::where('product_color_size_id', '=', $productCS->id)->first();
+                                if ($proOrderDetails) {
+                                    $order = Order::where("id", $proOrderDetails->order_id)->first();
+                                    if ($order->status != 'Delivered') {
+                                        return redirect()->route('Show_one subcategory', ['category_id' => encrypt($category->id), 'subcategory_id' => encrypt($subcat->id)])->with('error', "This product is order and the it's status is $order->status");
+                                    } else {
+                                        $product->update([
+                                            'delete_status' => 'Yes'
+                                        ]);
+                                        return redirect()->route('Show_one subcategory', ['category_id' => encrypt($category->id), 'subcategory_id' => encrypt($subcat->id)])->with('error', "This product is present in  an order and will be deleted within one week.");
+                                    }
+                                }
+                                if ($proCartItem) {
+                                    $product->update([
+                                        'delete_status' => 'Yes'
+                                    ]);
+                                    return redirect()->route('Show_one subcategory', ['category_id' => encrypt($category->id), 'subcategory_id' => encrypt($subcat->id)])->with('error', "This product is present in  a cart item and will be deleted within one week.");
+                                }
                                 $productCS->delete();
 
                                 $is_size_agian = ProductColorSize::where('product_sizes_id', $productSize->id)->first();
@@ -446,7 +510,7 @@ class AdminController extends Controller
                                     $productSize->delete();
                                     $productColor->delete();
                                 }
-                                return redirect()->route('Show_one product',['category_id' => encrypt($category->id), 'subcategory_id' => encrypt($subcat->id), 'product_id' => encrypt($product->id)])->with('success', "product color size is deleted successfully");
+                                return redirect()->route('Show_one product', ['category_id' => encrypt($category->id), 'subcategory_id' => encrypt($subcat->id), 'product_id' => encrypt($product->id)])->with('success', "product color size is deleted successfully");
                             } else {
                                 return redirect()->back()->with("error", "this product color size does not exist");
                             }
@@ -525,6 +589,7 @@ class AdminController extends Controller
                                 "main_discount" => $request->main_discount,
                                 "product_code" => $request->product_code,
                                 "status" => $request->status,
+                                "delete_status" => $request->delete_status,
                                 "sub_category_id" => $subcategory->id,
                             ]);
                             $is_product_exist->productColor->first()->update([
@@ -734,6 +799,63 @@ class AdminController extends Controller
             }
         } else {
             return redirect()->route('adminlogin')->with('error', 'You Must Login First');
+        }
+    }
+
+
+    // ! admin delete prod
+    public function GG()
+    {
+        $thresholdDate = now()->subDays(1);
+        // $thresholdDate
+        $products = Product::where("delete_status", 'Yes')->whereDate('updated_at', '=', $thresholdDate)->get();
+        if ($products) {
+            foreach ($products as $product) {
+                // get wishlist
+                $proWishlist = $product->productWishlist;
+                if ($proWishlist) {
+                    foreach ($proWishlist as $proWish) {
+                        $proWish->pivot->delete();
+                    }
+                }
+                // get review
+                $proReview = $product->productReview;
+                if ($proReview) {
+                    foreach ($proReview as $pro) {
+                        $pro->delete();
+                    }
+                }
+                foreach ($product->productColor as $proColor) {
+                    foreach ($proColor->colorSize as $productCSs) {
+                        // dd($productCSs);
+                        $proCartItem = CartItem::where('product_color_size_id', '=', $productCSs->pivot->id)->get();
+                        $proOrderDetails = OrderDetail::where('product_color_size_id', '=', $productCSs->pivot->id)->get();
+                        if ($proCartItem) {
+                            foreach ($proCartItem as $proCart) {
+                                $proCart->delete();
+                            }
+                        }
+                        if ($proOrderDetails) {
+                            foreach ($proOrderDetails as $proOrderDetail) {
+                                $proOrderDetail->delete();
+                            }
+                        }
+                        if ($productCSs->pivot->image != null) {
+                            Storage::delete($productCSs->pivot->image);
+                        }
+                        $productCSs->pivot->delete();
+                    }
+                    $proColor->delete();
+                }
+                foreach ($product->productSize as $proSize) {
+                    $proSize->delete();
+                }
+                if ($product->image != null) {
+                    Storage::delete($product->image);
+                }
+                $product->delete();
+            }
+        } else {
         }
     }
 }

@@ -4,7 +4,7 @@
             @if (Auth::user()->image != null)
             <img src="{{asset("storage")."/".Auth::user()->image}}" alt="">
             @else
-            <img src="{{asset("img/profile img/profile pic/defalut_profile.jpeg")}}" alt="">
+                    <img src="{{asset("img/dashboard/customer images/cust6.png")}}" alt="no">
             @endif
         </div>
         <div class="name">

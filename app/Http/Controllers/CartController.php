@@ -36,7 +36,7 @@ class CartController extends Controller
     {
         $user = Auth::user();
         if ($user) {
-            $product = Product::findOrFail($request->product_id);
+            $product = Product::where("id",$request->product_id)->where('delete_status','No')->first();
             if ($product) {
                 $user_cart = Cart::where("user_id", $user->id)->first();
                 $user_cart_id = null;
@@ -122,7 +122,7 @@ class CartController extends Controller
     {
         $user = Auth::user();
         if ($user) {
-            $product = Product::where("id", $product_id)->first();
+            $product = Product::where("id", $product_id)->where('delete_status','No')->first();
             if ($product) {
                 $cat_item_product = CartItem::where("id", $cart_item_id)->first();
                 if ($cat_item_product) {
@@ -141,7 +141,7 @@ class CartController extends Controller
 
     public function handleEditCart($cart_item_id, EditCartRequest $request)
     {
-        $product = Product::findOrFail($request->product_id);
+        $product = Product::where("id",$request->product_id)->where('delete_status','No')->first();
         if ($product) {
             $color = ProductColor::where("color", $request->color)->where("product_id", $product->id)->first();
             $size = ProductSize::where("size", $request->size)->where("product_id", $product->id)->first();

@@ -19,11 +19,13 @@ class CartItem extends Model
         'updated_at'
     ];
 
-    public function cartitemProuductSC(){
+    public function cartitemProuductSC()
+    {
         return $this->hasMany(ProductColorSize::class);
     }
 
-    public function cartitemCart(){
+    public function cartitemCart()
+    {
         return $this->belongsTo(Cart::class);
     }
 }

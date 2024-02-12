@@ -40,7 +40,7 @@ class ProductController extends Controller
         if ($category) {
             $subcategory = SubCategory::where("category_id", $category->id)->where("name", $subcategory_name)->first();
             if ($subcategory) {
-                $product = Product::where('sub_category_id', $subcategory->id)->where('id', $product_id)->first();
+                $product = Product::where('sub_category_id', $subcategory->id)->where('id', $product_id)->where('delete_status','No')->first();
                 if ($product) {
                     return view('pages.One Product.one_product', compact("product"));
                 } else {
@@ -60,8 +60,8 @@ class ProductController extends Controller
         if ($category) {
             $subcategory = SubCategory::where("category_id", $category->id)->where("name", $subcategory_name)->first();
             if ($subcategory) {
-                $products = $subcategory->subcategoryProduct()->paginate(8);
-                return view('pages.All Products.sub_cateproduct', compact("products","subcategory", "category"));
+                $products = $subcategory->subcategoryProduct()->where('status','show')->where('delete_status','No')->paginate(8);
+                return view('pages.All Products.sub_cateproduct', compact("products", "subcategory", "category"));
             } else {
                 return redirect()->route('error');
             }
@@ -73,7 +73,7 @@ class ProductController extends Controller
     public function search(Request $request)
     {
         $product_name = $request->search;
-        $products = Product::where('name', 'LIKE', '%' . str_replace(' ', '%', $product_name) . '%')->get();
+        $products = Product::where('name', 'LIKE', '%' . str_replace(' ', '%', $product_name) . '%')->where('delete_status','No')->get();
         return view('pages.All Products.search_products', compact('products'));
     }
 
@@ -119,5 +119,4 @@ class ProductController extends Controller
         $product = Product::all('name');
         return GetAllProductApi::collection($product);
     }
-
 }

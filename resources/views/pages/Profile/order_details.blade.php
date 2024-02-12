@@ -37,14 +37,14 @@
                 @endif
 
                 @if ($size->size == 'ONE SIZE' || $size->size == 'NO SIZE')
-                <div class="quantity">
-                    <p>{{ $size->size }}</p>
-                </div>
-            @else
-                <div class="size">
-                    <p>{{ $size->size }}</p>
-                </div>
-            @endif
+                    <div class="quantity">
+                        <p>{{ $size->size }}</p>
+                    </div>
+                @else
+                    <div class="size">
+                        <p>{{ $size->size }}</p>
+                    </div>
+                @endif
                 <div class="quantity">
                     <p>{{ $order->OrderOrderDetails[$loop->index]->quantity }}</p>
                 </div>
@@ -81,9 +81,12 @@
             <h1>continue to payment</h1>
         </div>
         <div class="pay">
-            <a href="{{route('payment page',['order_id'=>encrypt($order->id)])}}"><img src="{{ asset('img/Stars/paypal.png') }}" alt="no"></a>
-            <a href="{{route('payment page',['order_id'=>encrypt($order->id)])}}"><img src="{{ asset('img/Stars/master_card.png') }}" alt=""></a>
-            <a href="{{route('payment page',['order_id'=>encrypt($order->id)])}}"><img src="{{ asset('img/Stars/visa.png') }}" alt=""></a>
+            <a href="{{ route('payment page', ['order_id' => encrypt($order->id)]) }}"><img
+                    src="{{ asset('img/Stars/paypal.png') }}" alt="no"></a>
+            <a href="{{ route('payment page', ['order_id' => encrypt($order->id)]) }}"><img
+                    src="{{ asset('img/Stars/master_card.png') }}" alt=""></a>
+            <a href="{{ route('payment page', ['order_id' => encrypt($order->id)]) }}"><img
+                    src="{{ asset('img/Stars/visa.png') }}" alt=""></a>
         </div>
     </section>
 @endsection

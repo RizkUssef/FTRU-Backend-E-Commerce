@@ -7,7 +7,7 @@
     </section>
     @include('pages.includes.session')
     <section class="section_search">
-        <form id="submit_search" action="{{ route('search',["category_name"=>$category->name]) }}" method="POST">
+        <form id="submit_search" action="{{ route('search', ['category_name' => $category->name]) }}" method="POST">
             @csrf
             <div class="search-container">
                 <input name="search" type="text" id="search" placeholder="Search">
@@ -39,7 +39,7 @@
         </div>
 
         @foreach ($category->categorySubcategory as $subcate)
-            @foreach ($subcate->subcategoryProduct()->inRandomOrder()->take(2)->get() as $product)
+            @foreach ($subcate->subcategoryProduct()->inRandomOrder()->where('status', 'show')->take(2)->get() as $product)
                 <div class="first_product">
                     <a
                         href="{{ route('one product', ['category_name' => $category->name, 'subcategory_name' => $subcate->name, 'product_id' => $product->id]) }}">
@@ -47,7 +47,7 @@
                             <div class="rate_number">
                                 @if ($product->productReview->avg('rating_value'))
                                     <img src="../../img/Stars/star.png" alt="no" srcset="">
-                                    <p>{{$product->productReview->avg('rating_value')}}</p>   
+                                    <p>{{ $product->productReview->avg('rating_value') }}</p>
                                 @endif
                             </div>
                             <div class="pro_img">
@@ -65,14 +65,14 @@
                             <div class="price_stock">
                                 @if ($product->main_discount)
                                     <div class="price">
-                                        <p>{{$product->main_price ." $"}}</p> 
+                                        <p>{{ $product->main_price . " $" }}</p>
                                     </div>
                                     <div class="price_disc">
                                         @php
-                                            $price_after_disc = $product->main_price - ($product->main_price * ($product->main_discount/100));
+                                            $price_after_disc = $product->main_price - $product->main_price * ($product->main_discount / 100);
                                         @endphp
                                         {{-- <p>{{"discount  ". $product->main_discount. " %" }}</p> --}}
-                                        <p>{{ $price_after_disc. " $" }}</p>
+                                        <p>{{ $price_after_disc . " $" }}</p>
                                     </div>
                                 @else
                                     <div class="price_disc">
@@ -107,7 +107,7 @@
                             <div class="rate_number">
                                 @if ($product->productReview->avg('rating_value'))
                                     <img src="../../img/Stars/star.png" alt="no" srcset="">
-                                    <p>{{$product->productReview->avg('rating_value')}}</p>   
+                                    <p>{{ $product->productReview->avg('rating_value') }}</p>
                                 @endif
                             </div>
                             <div class="pro_img">
@@ -125,14 +125,14 @@
                             <div class="price_stock">
                                 @if ($product->main_discount)
                                     <div class="price">
-                                        <p>{{$product->main_price ." $"}}</p> 
+                                        <p>{{ $product->main_price . " $" }}</p>
                                     </div>
                                     <div class="price_disc">
                                         @php
-                                            $price_after_disc = $product->main_price - ($product->main_price * ($product->main_discount/100));
+                                            $price_after_disc = $product->main_price - $product->main_price * ($product->main_discount / 100);
                                         @endphp
                                         {{-- <p>{{"discount  ". $product->main_discount. " %" }}</p> --}}
-                                        <p>{{ $price_after_disc. " $" }}</p>
+                                        <p>{{ $price_after_disc . " $" }}</p>
                                     </div>
                                 @else
                                     <div class="price_disc">
@@ -149,7 +149,6 @@
     <hr>
 
     @include('pages.includes.somehints')
-
 @endsection
 @section('script')
     <script src="../js/nav.js"></script>

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('main_discount');
             $table->string("product_code");
             $table->enum("status",["show","hide"])->default("hide");
+            $table->enum("delete_status",["Yes","No"])->default("No");
             $table->unsignedBigInteger('sub_category_id');
             $table->foreign('sub_category_id')->references('id')->on('sub_categories');
             $table->timestamps();

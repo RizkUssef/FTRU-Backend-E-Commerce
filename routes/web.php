@@ -128,3 +128,8 @@ Route::get('FTRU/Payment/{order_id}',[OrderController::class,'paymentPage'])->na
 Route::get('gt',function(){
     return view('pages.Success.check_your_email');
 });
+
+
+// ! join try
+// Route::get('go',[AdminController::class,"joinTry"]);
+Route::get('kola',[AdminController::class,"GG"]);

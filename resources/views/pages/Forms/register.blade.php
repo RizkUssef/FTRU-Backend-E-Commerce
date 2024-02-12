@@ -13,13 +13,13 @@
             <form action="{{route('handle_register')}}" method="POST">
                 @csrf
                 <label class="reg_label" for="">Name</label>
-                <input  class="reg_inputs_one" type="text" name="name">
+                <input  class="reg_inputs_one" type="text" name="name" value="{{old('name')}}">
                 @error('name')
                     {{ $message }}
                 @enderror
 
                 <label class="reg_label" for="">Email</label>
-                <input class="reg_inputs_two" type="email" name="email">
+                <input class="reg_inputs_two" type="email" name="email" value="{{old('email')}}">
                 @error('email')
                     {{ $message }}
                 @enderror
@@ -35,7 +35,7 @@
                 @enderror
 
                 <label class="reg_label" for="">Phone</label>
-                <input  class="reg_inputs_five" type="text" name="phone">
+                <input  class="reg_inputs_five" type="text" name="phone" value="{{old('phone')}}">
                 @error('phone')
                     {{ $message }}
                 @enderror
@@ -52,7 +52,7 @@
                 @enderror
 
                 <label class="reg_label" for="">Address</label>
-                <input  class="reg_inputs_seven" type="text" name="address">
+                <input  class="reg_inputs_seven" type="text" name="address" value="{{old('address')}}">
                 @error('address')
                     {{ $message }}
                 @enderror

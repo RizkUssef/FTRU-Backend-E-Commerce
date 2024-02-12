@@ -102,24 +102,47 @@
                     <h3>STATUS</h3>
                 </div>
 
-                @foreach ($allCust as $customer)
-                @foreach ($customer->userOrder()->latest("created_at")->take(1)->get() as $order)
-                <div class="order_data">
-                    <div class="id">
-                        <p>{{ '#'.$loop->iteration }}</p>
+                {{-- !first and best way for memory --}}
+                {{-- !add cheak --}}
+                {{-- @foreach ($allOrder as $order)
+                    @if ($order->lastOrder)
+                        <div class="order_data">
+                            <div class="id">
+                                <p>{{ '#' . $loop->iteration }}</p>
+                            </div>
+                            <div class="name">
+                                <p>{{ $order->name }}</p>
+                            </div>
+                            <div class="total">
+                                <p>{{ $order->lastOrder->total . '$' }}</p>
+                            </div>
+                            <div class="status">
+                                <p>{{ $order->lastOrder->status }}</p>
+                            </div>
+                        </div>
+                    @endif
+                @endforeach --}}
+
+                @foreach ($users as $user)
+                    @foreach ($user->userOrder()->latest("created_at")->take(1)->get() as $order)
+                    <div class="order_data">
+                        <div class="id">
+                            <p>{{ '#'.$loop->iteration }}</p>
+                        </div>
+                        <div class="name">
+                            <p>{{ $order->orderUser->name }}</p>
+                        </div>
+                        <div class="total">
+                            <p>{{$order->total .' $'}}</p>
+                        </div>
+                        <div class="status">
+                            <p>{{ $order->status }}</p>
+                        </div>
                     </div>
-                    <div class="name">
-                        <p>{{ $order->orderUser->name }}</p>
-                    </div>
-                    <div class="total">
-                        <p>{{$order->total .'$'}}</p>
-                    </div>
-                    <div class="status">
-                        <p>{{ $order->status }}</p>
-                    </div>
-                </div>
+                    @endforeach
                 @endforeach
-            @endforeach
+
+
 
             </div>
         @endif
@@ -128,6 +151,7 @@
     <section class="resent">
         <h1>RESENT REVIEW</h1>
         <div class="all_review">
+
             @foreach ($allCust as $customer)
                 @foreach ($customer->userReview()->latest('created_at')->take(1)->get() as $review)
                     <div class="review_1">

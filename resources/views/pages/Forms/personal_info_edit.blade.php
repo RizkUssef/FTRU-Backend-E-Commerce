@@ -7,16 +7,15 @@
         <div class="containt">
 
             <h1 class="reg">Edit Presonal Info</h1>
-            <form action="{{route('handle edit personal info')}}" method="POST" enctype="multipart/form-data">
-                @method("put")
+            <form action="{{ route('handle edit personal info') }}" method="POST" enctype="multipart/form-data">
+                @method('put')
                 @csrf
-
 
                 <div class="prsonal_img_edit">
                     @if (Auth::user()->image != null)
-                    <img src="{{asset("storage")."/".Auth::user()->image}}" alt="">
+                        <img src="{{ asset('storage') . '/' . Auth::user()->image }}" alt="no">
                     @else
-                    <img src="{{asset("img/profile img/profile pic/defalut_profile.jpeg")}}" alt="">
+                        <img src="{{ asset('img/dashboard/customer images/cust6.png') }}" alt="no">
                     @endif
                     <input class="upload" type="file" name="image">
                     @error('name')
@@ -24,15 +23,14 @@
                     @enderror
                 </div>
 
-
                 <label class="reg_label" for="">Name</label>
-                <input  class="reg_inputs_one" type="text" name="name" value="{{Auth::user()->name}}">
+                <input class="reg_inputs_one" type="text" name="name" value="{{ Auth::user()->name }}">
                 @error('name')
                     {{ $message }}
                 @enderror
 
                 <label class="reg_label" for="">Email</label>
-                <input class="reg_inputs_two" type="email" name="email" value="{{Auth::user()->email}}">
+                <input class="reg_inputs_two" type="email" name="email" value="{{ Auth::user()->email }}">
                 @error('email')
                     {{ $message }}
                 @enderror
@@ -48,7 +46,7 @@
                 @enderror
 
                 <label class="reg_label" for="">Phone</label>
-                <input  class="reg_inputs_five" type="text" name="phone" value="{{Auth::user()->phone}}">
+                <input class="reg_inputs_five" type="text" name="phone" value="{{ Auth::user()->phone }}">
                 @error('phone')
                     {{ $message }}
                 @enderror
@@ -57,7 +55,7 @@
                 <select class="reg_inputs_six" name="country_id" id="">
                     <option selected disabled value=""></option>
                     @foreach ($countries as $country)
-                        <option value="{{$country->id}}">{{$country->name}}</option>
+                        <option value="{{ $country->id }}">{{ $country->name }}</option>
                     @endforeach
                 </select>
                 @error('country_id')
@@ -65,14 +63,14 @@
                 @enderror
 
                 <label class="reg_label" for="">Address</label>
-                <input  class="reg_inputs_seven" type="text" name="address" value="{{Auth::user()->main_address}}">
+                <input class="reg_inputs_seven" type="text" name="address" value="{{ Auth::user()->main_address }}">
                 @error('address')
                     {{ $message }}
                 @enderror
 
-                {{--added--}}
-                <p class="already"> <span><a href="{{route('change_pass')}}">Change Password</a></span> </p>
-                {{--added--}}
+                {{-- added --}}
+                <p class="already"> <span><a href="{{ route('change_pass') }}">Change Password</a></span> </p>
+                {{-- added --}}
                 <button class="submit" type="submit">Save Changes</button>
             </form>
         </div>

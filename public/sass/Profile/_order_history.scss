@@ -605,6 +605,30 @@
                 }
             }
         }
+        .before{
+            position: relative;
+            &::before{
+                content: "";
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                right: 0;
+                left: 0;
+                background-color: rgba(63, 64, 69, 0.3); 
+                border-radius: 25px;
+                backdrop-filter: blur(3px);
+            }
+            &::after{
+                content: "Unavailable Anymore";
+                color: #e2574c;
+                font-size: 50px;
+                position: absolute;
+                top: 35%;
+                bottom: 0;
+                right: 0;
+                left: 70px;
+            }
+        }
     }
 }
 
