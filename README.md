@@ -9,6 +9,7 @@ FTRU is a comprehensive eCommerce platform built on Laravel, designed to provide
 * Usage
 * Features
 * Technologies Used
+* License
 ## Installation
 
 Install FTRU ECommerce
