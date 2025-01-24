@@ -164,7 +164,7 @@
     <script src="../js/nav.js"></script>
     <script>
         document.getElementById('disBtn').addEventListener('click', function(e) {
-            e.preventDefault();
+            
         });
     </script>
 @endsection
