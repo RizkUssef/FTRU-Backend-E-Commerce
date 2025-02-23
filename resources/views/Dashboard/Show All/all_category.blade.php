@@ -32,6 +32,9 @@
         <h1>CATEGORIES</h1>
         <div class="all_cate_blocks">
             {{-- {{$category_name}} --}}
+            @php
+                $cat_img_logo = ['img/dashboard/category_images/man_cate.jpeg','img/dashboard/category_images/wom.jpeg','img/dashboard/category_images/kid_cate_2.jpeg','img/dashboard/category_images/accessories.jpeg','img/dashboard/category_images/bags.jpeg','img/dashboard/category_images/makeup.jpeg']
+            @endphp
             @foreach ($categories as $cate)
                 
                 <div class="cate">
@@ -40,7 +43,7 @@
                     </div>
                     <div class="img_name">
                         <div class="image">
-                            <img src="../../../img/dashboard/category_images/man_cate.jpeg" alt="" srcset="">
+                            <img src="{{asset($cat_img_logo[$loop->index])}}" alt="" srcset="">
                         </div>
                         <div class="name">
                             <h1>{{ $cate->name }}</h1>

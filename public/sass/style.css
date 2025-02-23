@@ -7429,7 +7429,7 @@ hr {
   border-bottom: 1px solid #E9E8DE;
   background: linear-gradient(289deg, rgba(233, 232, 222, 0.74) 18.09%, rgba(233, 232, 222, 0) 64.55%);
   cursor: pointer;
-  margin-left: 80%;
+  margin-left: 68%;
 }
 .all_categories .add_cate a, .all_categories .add_subcate a {
   text-decoration: none;

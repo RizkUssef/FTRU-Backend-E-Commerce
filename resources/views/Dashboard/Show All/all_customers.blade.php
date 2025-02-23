@@ -44,7 +44,11 @@
                     </div>
                     <div class="img_name">
                         <div class="image">
-                            <img src="{{ asset("storage/$cust->image") }}" alt="not" srcset="">
+                            @if ($cust->image)
+                                <img src="{{ asset("storage/$cust->image") }}" alt="not" srcset="">
+                            @else
+                                <img src="{{ asset("img/Stars/user (1).png") }}" alt="not" srcset="">
+                            @endif
                         </div>
                         <div class="name">
                             <h1>{{ $cust->name }}</h1>

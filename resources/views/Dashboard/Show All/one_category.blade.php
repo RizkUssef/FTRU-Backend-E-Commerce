@@ -31,6 +31,16 @@
             <a href="{{ route('add subcategory') }}">ADD SUBCATEGORY</a>
         </div>
         <div class="all_cate_blocks">
+            @php
+                $cat_img_logo = [
+                    'img/dashboard/sub_cate_image/jacket.png',
+                    'img/dashboard/sub_cate_image/pants.png',
+                    'img/dashboard/sub_cate_image/shirt.png',
+                    'img/dashboard/sub_cate_image/short.png',
+                    'img/dashboard/sub_cate_image/shose.png',
+                    'img/dashboard/category_images/makeup.jpeg',
+                ];
+            @endphp
             @foreach ($subCates as $subcate)
                 <div class="cate">
                     <div class="id_link">
@@ -39,8 +49,7 @@
                     </div>
                     <div class="img_name">
                         <div class="image">
-                            <img src="{{ asset('img/comics/reset.jpeg') }}"
-                                alt="Subcategory picture" srcset="">
+                            <img src="{{ asset($cat_img_logo[$loop->index]) }}" alt="Subcategory picture" srcset="">
                         </div>
                         <div class="name">
                             @php
